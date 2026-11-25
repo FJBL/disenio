@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cumbre-iztaccihuatl",
+    "name": "Cumbre Iztaccihuatl",
+    "date": "7–8 NOV 2026",
+    "level": "5 y 6 garritas · Hija(o) de Las Nubes",
+    "image": "assets/images/iztaccihuatl.webp",
+    "link": "https://www.mixtlisenlamontana.com/rutas/cumbre-iztaccihuatl",
+    "status": "DISPONIBLE",
+    "distance": "16 km",
+    "elevation": "1320 m D+",
+    "duration": "2 días"
+  },
+  {
+    "id": "nevado-de-colima",
+    "name": "Nevado de Colima",
+    "date": "29 ENE–1 FEB 2027",
+    "level": "5 garritas · Guerrero/a Mixtli",
+    "image": "assets/images/nevado-colima.webp",
+    "link": "https://www.mixtlisenlamontana.com/rutas/nevado-de-colima",
+    "status": "AGOTADO",
+    "distance": "16 km",
+    "elevation": "1320 m D+",
+    "duration": "2 días"
+  },
+  {
+    "id": "sierra-negra",
+    "name": "Sierra Negra",
+    "date": "21–22 NOV 2026",
+    "level": "4 garritas · Guardián de la Montaña",
+    "image": "assets/images/sierra-negra.webp",
+    "link": "https://www.mixtlisenlamontana.com/rutas/sierra-negra",
+    "status": "AGOTADO",
+    "distance": "16 km",
+    "elevation": "1320 m D+",
+    "duration": "2 días"
+  },
+  {
+    "id": "sierra-negra-2",
+    "name": "Sierra Negraww",
+    "date": "21–27 NOV 2026",
+    "level": "2 garritas · Guardián de la Montaña",
+    "image": "assets/images/sierra-negra.webp",
+    "link": "https://www.mixtlisenlamontana.com/rutas/sierra-negra",
+    "status": "DISPONIBLE",
+    "distance": "16 km",
+    "elevation": "1320 m D+",
+    "duration": "2 días"
+  }
+]

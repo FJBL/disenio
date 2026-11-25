@@ -1,0 +1,49 @@
+<section class="adventures section-wrap" id="aventuras" aria-labelledby="adventures-title">
+  <div class="section-heading">
+    <p class="eyebrow">LA VIBRA MIXTLI TE ESTÁ LLAMANDO</p>
+    <h2 id="adventures-title">PRÓXIMAS AVENTURAS</h2>
+    <p class="section-intro">
+      Descubre las próximas rutas del Clan y encuentra una experiencia acorde con tu preparación.
+    </p>
+  </div>
+
+  <div class="adventure-grid">
+    @for (adventure of adventures; track adventure.id) {
+      <article class="adventure-card">
+        <img class="adventure-image" [src]="adventure.image" [alt]="adventure.name" />
+        <div class="adventure-overlay"></div>
+        <div class="adventure-info">
+          <p class="adventure-level">{{ adventure.level }}</p>
+          <h3>{{ adventure.name }}</h3>
+          <p class="adventure-date">{{ adventure.date }}</p>
+          <ul class="adventure-stats" aria-label="Datos de la ruta">
+            <li>{{ adventure.distance }}</li>
+            <li>{{ adventure.elevation }}</li>
+            <li>{{ adventure.duration }}</li>
+          </ul>
+          <a class="experience-link" [href]="adventure.link" target="_blank" rel="noreferrer">
+            VER EXPERIENCIA <span aria-hidden="true">↗</span>
+          </a>
+          <span
+            class="sold-out"
+            [class.is-available]="adventure.status === 'DISPONIBLE'"
+            [class.is-sold-out]="adventure.status === 'AGOTADO'"
+          >
+            {{ adventure.status }}
+          </span>
+        </div>
+      </article>
+    }
+  </div>
+
+  <a
+    class="calendar-link"
+    href="https://www.mixtlisenlamontana.com/_files/ugd/60e1ca_83b14ad9867b4378828c59ad23c7afed.pdf"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <span class="calendar-icon" aria-hidden="true">▦</span>
+    <span><small>DESCARGA EL</small><strong>CALENDARIO MENSUAL</strong></span>
+    <span class="calendar-arrow" aria-hidden="true">→</span>
+  </a>
+</section>

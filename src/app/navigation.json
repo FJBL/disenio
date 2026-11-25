@@ -1,0 +1,32 @@
+[
+  {
+    "id": "inicio",
+    "label": "INICIO",
+    "href": "#inicio"
+  },
+  {
+    "id": "sendero",
+    "label": "Sendero",
+    "href": "#aventuras"
+  },
+  {
+    "id": "montana",
+    "label": "Montaña",
+    "href": "#niveles"
+  },
+  {
+    "id": "aventura",
+    "label": "Aventura",
+    "href": "#aventuras"
+  },
+  {
+    "id": "familiar",
+    "label": "Familiar",
+    "href": "#comunidad"
+  },
+  {
+    "id": "mas",
+    "label": "More",
+    "href": "#contacto"
+  }
+]

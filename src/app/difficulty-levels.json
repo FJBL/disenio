@@ -1,0 +1,56 @@
+[
+  {
+    "number": 1,
+    "title": "Primeros pasos",
+    "description": "Paseos tranquilos para descubrir el senderismo y disfrutar a tu propio ritmo.",
+    "mascot": "assets/images/mascot-nori.webp",
+    "ratingImage": "assets/images/garrita-1.webp",
+    "ratingLabel": "1 garrita",
+    "countLabel": "GARRITA"
+  },
+  {
+    "number": 2,
+    "title": "Ritmo ligero",
+    "description": "Primeras experiencias y senderos de exigencia ligera a moderada.",
+    "mascot": "assets/images/mascot-nori.webp",
+    "ratingImage": "assets/images/garrita-2.webp",
+    "ratingLabel": "2 garritas",
+    "countLabel": "GARRITAS"
+  },
+  {
+    "number": 3,
+    "title": "Explorador/a",
+    "description": "Rutas con mayor distancia y desnivel. Ideal si ya tienes experiencia caminando.",
+    "mascot": "assets/images/mascot-gui.webp",
+    "ratingImage": "assets/images/garrita-3.webp",
+    "ratingLabel": "3 garritas",
+    "countLabel": "GARRITAS"
+  },
+  {
+    "number": 4,
+    "title": "Guardián de la montaña",
+    "description": "Terreno variable y ascensos retadores; requiere condición física y preparación.",
+    "mascot": "assets/images/mascot-gui.webp",
+    "ratingImage": "assets/images/garrita-4.webp",
+    "ratingLabel": "4 garritas",
+    "countLabel": "GARRITAS"
+  },
+  {
+    "number": 5,
+    "title": "Guerrero/a Mixtli",
+    "description": "Rutas de alta exigencia, gran desnivel y jornadas largas en montaña.",
+    "mascot": "assets/images/mascot-vico.webp",
+    "ratingImage": "assets/images/garrita-5.webp",
+    "ratingLabel": "5 garritas",
+    "countLabel": "GARRITAS"
+  },
+  {
+    "number": 6,
+    "title": "Hija(o) de las nubes",
+    "description": "Experiencias de alta montaña para personas con experiencia y buena preparación.",
+    "mascot": "assets/images/mascot-muyal.webp",
+    "ratingImage": "assets/images/garrita-6.webp",
+    "ratingLabel": "6 garritas",
+    "countLabel": "GARRITAS"
+  }
+]
