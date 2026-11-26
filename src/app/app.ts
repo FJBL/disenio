@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import difficultyLevelsData from './difficulty-levels.json';
-import navigationData from './navigation.json';
+import difficultyLevelsData from './data/difficulty-levels.json';
+import navigationData from './data/navigation.json';
+import socialLinksData from './data/social-links.json';
 import { Adventures } from './adventures/adventures';
+import { More } from './more/more';
 
 type NavigationItem = {
   id: string;
   label: string;
   href: string;
+};
+
+type SocialLink = {
+  id: string;
+  label: string;
+  url: string;
 };
 
 type DifficultyLevel = {
@@ -22,7 +30,7 @@ type DifficultyLevel = {
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, Adventures],
+  imports: [FormsModule, Adventures, More],
   templateUrl: './app.html',
 })
 export class App {
@@ -30,6 +38,7 @@ export class App {
   protected contactSubmitted = false;
 
   protected readonly navigationItems: readonly NavigationItem[] = navigationData;
+  protected readonly socialLinks: readonly SocialLink[] = socialLinksData;
 
   protected readonly difficultyLevels: readonly DifficultyLevel[] = difficultyLevelsData;
 

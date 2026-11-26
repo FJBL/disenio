@@ -4,7 +4,7 @@ Recreación adaptable de la página de inicio de Mixtlis en Angular 21. Las imá
 
 ## Agregar una aventura
 
-El componente `src/app/adventures/` lee `src/app/adventures.json`. Para agregar una ruta, añade un objeto al arreglo; cada aventura debe tener un `id` único y los siguientes datos:
+El componente `src/app/adventures/` lee `src/app/data/adventures.json`. Para agregar una ruta, añade un objeto al arreglo; cada aventura debe tener un `id` único y los siguientes datos:
 
 ```json
 {
@@ -25,11 +25,19 @@ Guarda la imagen en `public/assets/images` y usa su ruta desde `assets/images`. 
 
 ## Editar el menú
 
-Edita `src/app/navigation.json` para cambiar, agregar o quitar elementos del menú. Cada elemento debe tener un `id` único, el texto `label` y el destino `href` (por ejemplo, `#aventuras`).
+Edita `src/app/data/navigation.json` para cambiar, agregar o quitar elementos del menú. Cada elemento debe tener un `id` único, el texto `label` y el destino `href` (por ejemplo, `#aventuras`).
+
+## Editar redes sociales
+
+Edita `src/app/data/social-links.json` para agregar o modificar los perfiles sociales. Cada objeto contiene un `id` (`facebook`, `instagram` o `tiktok`), `label` y `url`.
+
+## Editar la sección More
+
+El componente `src/app/more/` muestra los teléfonos, WhatsApp y horarios de atención definidos en `src/app/data/more.json`. Actualiza esos datos en el JSON para cambiar la información de contacto.
 
 ## Editar los niveles de dificultad
 
-Edita `src/app/difficulty-levels.json` para cambiar o agregar niveles. Cada objeto contiene `number`, `title`, `description`, `mascot`, `ratingImage`, `ratingLabel` y `countLabel`. Las imágenes deben existir en `public/assets/images`.
+Edita `src/app/data/difficulty-levels.json` para cambiar o agregar niveles. Cada objeto contiene `number`, `title`, `description`, `mascot`, `ratingImage`, `ratingLabel` y `countLabel`. Las imágenes deben existir en `public/assets/images`.
 
 ## Requisitos
 

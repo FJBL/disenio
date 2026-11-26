@@ -226,9 +226,13 @@ app-root {
   text-decoration: none;
 }
 
-.social-rail .instagram-mark {
-  font-size: 39px;
-  font-weight: 400;
+.social-rail a:hover {
+  color: #f7c844;
+}
+
+.social-rail svg {
+  width: 25px;
+  height: 25px;
 }
 
 .section-wrap {

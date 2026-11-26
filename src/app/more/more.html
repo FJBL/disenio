@@ -1,0 +1,37 @@
+<section class="more-section" id="contacto" aria-labelledby="more-title">
+  <div class="more-inner">
+    <div class="more-intro">
+      <p class="more-eyebrow">ESTAMOS PARA AYUDARTE</p>
+      <h2 id="more-title">Hablemos de tu próxima aventura</h2>
+      <p>Comunícate con nuestro equipo para resolver tus dudas sobre rutas y experiencias.</p>
+    </div>
+
+    <div class="contact-list">
+      @for (contact of contacts; track contact.nombreCompleto) {
+        <article class="contact-card">
+          <h3>{{ contact.nombreCompleto }}</h3>
+         
+          <a
+            class="contact-method"
+            [href]="whatsappLink(contact.whatsapp)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="contact-icon" aria-hidden="true">✆</span>
+            <span><small>WhatsApp</small><strong>{{ contact.whatsapp }}</strong></span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <div class="hours">
+            <h4>Horario de atención</h4>
+            <p>{{ contact.horarioAtencion.dias.join(', ') }}</p>
+            <p>
+              {{ contact.horarioAtencion.horaInicio }}–{{ contact.horarioAtencion.horaFin }}
+              <span>{{ contact.horarioAtencion.zonaHoraria }}</span>
+            </p>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

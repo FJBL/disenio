@@ -1,0 +1,32 @@
+[{
+  "nombreCompleto": "María González",
+
+  "whatsapp": "+52 55 1234 5678",
+  "horarioAtencion": {
+    "dias": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"],
+    "horaInicio": "09:00",
+    "horaFin": "18:00",
+    "zonaHoraria": "America/Mexico_City"
+  }
+},{
+  "nombreCompleto": "Diego González",
+
+  "whatsapp": "+52 55 1234 5678",
+  "horarioAtencion": {
+    "dias": [ "Martes", "Miércoles", "Jueves", "Viernes"],
+    "horaInicio": "09:00",
+    "horaFin": "20:00",
+    "zonaHoraria": "America/Mexico_City"
+  }
+},{
+  "nombreCompleto": "Mirian González",
+ 
+  "whatsapp": "+52 55 1234 5678",
+  "horarioAtencion": {
+    "dias": [ "Martes", "Miércoles", "Jueves", "Viernes"],
+    "horaInicio": "12:00",
+    "horaFin": "20:00",
+    "zonaHoraria": "America/Mexico_City"
+  }
+}
+]

@@ -1,0 +1,149 @@
+.more-section {
+  padding: 82px 24px;
+  background: #182b36;
+  color: #fff;
+}
+
+.more-inner {
+  display: grid;
+  width: min(1050px, 100%);
+  grid-template-columns: minmax(0, 0.8fr) minmax(300px, 1.2fr);
+  gap: clamp(36px, 8vw, 100px);
+  align-items: center;
+  margin-inline: auto;
+}
+
+.more-eyebrow {
+  margin: 0 0 14px;
+  color: #f7c844;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.more-intro h2 {
+  max-width: 500px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+}
+
+.more-intro > p:last-child {
+  max-width: 440px;
+  margin: 19px 0 0;
+  color: #d0d5d4;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.contact-card {
+  padding: 27px;
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 5%);
+}
+
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.contact-card h3 {
+  margin: 0 0 17px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-block: 13px;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+  color: #fff;
+  text-decoration: none;
+}
+
+.contact-method:hover strong {
+  color: #f7c844;
+}
+
+.contact-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(247 200 68 / 14%);
+  color: #f7c844;
+  font-size: 19px;
+}
+
+.contact-method small,
+.contact-method strong {
+  display: block;
+}
+
+.contact-method small {
+  margin-bottom: 4px;
+  color: #c4cfce;
+  font-size: 11px;
+}
+
+.contact-method strong {
+  font-size: 14px;
+  transition: color 160ms ease;
+}
+
+.contact-arrow {
+  margin-left: auto;
+  color: #f7c844;
+  font-size: 19px;
+}
+
+.hours {
+  margin-top: 11px;
+  padding-top: 18px;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.hours h4 {
+  margin: 0 0 10px;
+  color: #f7c844;
+  font-size: 13px;
+}
+
+.hours p {
+  margin: 6px 0 0;
+  color: #e2e4df;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.hours p span {
+  display: block;
+  color: #aab8b8;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  .more-section {
+    padding-block: 62px;
+  }
+
+  .more-inner {
+    grid-template-columns: 1fr;
+    gap: 29px;
+  }
+
+  .contact-list {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 22px;
+  }
+}

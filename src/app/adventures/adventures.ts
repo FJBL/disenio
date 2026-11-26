@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import adventuresData from '../adventures.json';
+import adventuresData from '../data/adventures.json';
 
 type Adventure = {
   id: string;

@@ -1,8 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
-import difficultyLevelsData from './difficulty-levels.json';
-import adventuresData from './adventures.json';
-import navigationData from './navigation.json';
+import difficultyLevelsData from './data/difficulty-levels.json';
+import adventuresData from './data/adventures.json';
+import navigationData from './data/navigation.json';
+import contactData from './data/more.json';
+import socialLinksData from './data/social-links.json';
 
 describe('App', () => {
   beforeEach(async () => {
@@ -41,6 +43,43 @@ describe('App', () => {
     expect(links.length).toBe(navigationData.length);
     expect(links[0].textContent.trim()).toBe('INICIO');
     expect(links[0].getAttribute('href')).toBe('#inicio');
+  });
+
+  it('should render social links from the social links data', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const links = compiled.querySelectorAll<HTMLAnchorElement>('.social-rail a');
+
+    expect(links.length).toBe(socialLinksData.length);
+    socialLinksData.forEach((social, index) => {
+      expect(links[index].href).toBe(social.url);
+      expect(links[index].getAttribute('aria-label')).toBe(social.label);
+      expect(links[index].target).toBe('_blank');
+    });
+  });
+
+  it('should show contact details and business hours from the More JSON data', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    const moreLink = compiled.querySelector<HTMLAnchorElement>('.main-nav a[href="#mas"]');
+    const contactCards = compiled.querySelectorAll('#contacto .contact-card');
+    const whatsappLinks = compiled.querySelectorAll<HTMLAnchorElement>(
+      '#contacto a[target="_blank"]',
+    );
+
+    expect(moreLink?.textContent?.trim()).toBe(
+      navigationData.find((item) => item.id === 'mas')?.label,
+    );
+    expect(contactCards.length).toBe(contactData.length);
+    expect(compiled.querySelector('#contacto h3')?.textContent).toContain(
+      contactData[0].nombreCompleto,
+    );
+    expect(compiled.querySelector('#contacto .hours')?.textContent).toContain(
+      contactData[0].horarioAtencion.zonaHoraria,
+    );
+    expect(whatsappLinks[0].href).toBe('https://wa.me/525512345678');
   });
 
   it('should show available and sold-out adventure statuses with distinct colors', async () => {

@@ -29,8 +29,35 @@
 </header>
 
 <aside class="social-rail" aria-label="Redes sociales">
-  <a href="#contacto" aria-label="Facebook">f</a>
-  <a href="#contacto" aria-label="Instagram" class="instagram-mark">◎</a>
+  @for (social of socialLinks; track social.id) {
+    <a [href]="social.url" [attr.aria-label]="social.label" target="_blank" rel="noopener noreferrer">
+      @switch (social.id) {
+        @case ('facebook') {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H7.3V13h2.8v8h3.4Z"
+            />
+          </svg>
+        }
+        @case ('instagram') {
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="2" />
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+            <circle cx="17.7" cy="6.5" r="1.1" fill="currentColor" />
+          </svg>
+        }
+        @case ('tiktok') {
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill="currentColor"
+              d="M19.6 8.3a7.1 7.1 0 0 1-4.4-1.5v7.1a5.7 5.7 0 1 1-5.7-5.7c.4 0 .8 0 1.2.1v3.2a2.6 2.6 0 1 0 1.8 2.5V2.5h3.1c.2 2 1.4 3.6 4 4.1v1.7Z"
+            />
+          </svg>
+        }
+      }
+    </a>
+  }
 </aside>
 
 <main>
@@ -100,7 +127,7 @@
     </div>
   </section>
 
-
+  <app-more id="mas"></app-more>
 
   <section class="newsletter" id="comunidad" aria-labelledby="newsletter-title">
     <div class="newsletter-inner section-wrap">
