@@ -1,5 +1,11 @@
-<header class="site-header" id="inicio">
-  <a class="brand" href="#inicio" aria-label="Mixtlis en la Montaña, inicio" (click)="closeMenu()">
+<header class="site-header">
+  <a
+    class="brand"
+    [routerLink]="['/']"
+    fragment="inicio"
+    aria-label="Mixtlis en la Montaña, inicio"
+    (click)="closeMenu()"
+  >
     <img src="assets/images/logo.webp" alt="Mixtlis en la Montaña" />
   </a>
 
@@ -15,11 +21,17 @@
 
   <nav class="main-nav" [class.is-open]="menuOpen" aria-label="Navegación principal">
     @for (item of navigationItems; track item.id) {
-      <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+      <a
+        [routerLink]="item.href.startsWith('#') ? '/' : item.href"
+        [fragment]="item.href.startsWith('#') ? item.href.slice(1) : undefined"
+        (click)="closeMenu()"
+      >
+        {{ item.label }}
+      </a>
     }
   </nav>
 
-  <a class="cart-link" href="#tienda" aria-label="Carrito con 0 artículos">
+  <a class="cart-link" [routerLink]="['/']" fragment="tienda" aria-label="Carrito con 0 artículos">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M4 11h24l-2 17H6L4 11Z"></path>
       <path d="M11 12V8a5 5 0 0 1 10 0v4M10 17v5m6-5v5m6-5v5"></path>
@@ -28,131 +40,12 @@
   </a>
 </header>
 
-<aside class="social-rail" aria-label="Redes sociales">
-  @for (social of socialLinks; track social.id) {
-    <a [href]="social.url" [attr.aria-label]="social.label" target="_blank" rel="noopener noreferrer">
-      @switch (social.id) {
-        @case ('facebook') {
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M13.5 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.2H7.3V13h2.8v8h3.4Z"
-            />
-          </svg>
-        }
-        @case ('instagram') {
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="2" />
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
-            <circle cx="17.7" cy="6.5" r="1.1" fill="currentColor" />
-          </svg>
-        }
-        @case ('tiktok') {
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M19.6 8.3a7.1 7.1 0 0 1-4.4-1.5v7.1a5.7 5.7 0 1 1-5.7-5.7c.4 0 .8 0 1.2.1v3.2a2.6 2.6 0 1 0 1.8 2.5V2.5h3.1c.2 2 1.4 3.6 4 4.1v1.7Z"
-            />
-          </svg>
-        }
-      }
-    </a>
-  }
-</aside>
-
-<main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-shade"></div>
-    <img class="hero-climber" src="assets/images/hero-climber.webp" alt="Montañista en la cumbre" />
-    <div class="hero-content">
-      <p class="hero-kicker">NATURALMENTE CONECTADOS</p>
-      <h1 id="hero-title">Encuentra <span>la ruta que estás</span><br />listo para vivir</h1>
-      <p class="hero-subtitle">Montaña, comunidad y seguridad para caminar a tu ritmo</p>
-      <div class="hero-actions">
-        <a class="button button-yellow" href="#aventuras">Próximas Rutas</a>
-        <button class="button button-outline" type="button" (click)="scrollTo('niveles')">
-          Descubre tu Nivel de Garrita
-        </button>
-      </div>
-      <img class="hero-mascot" src="assets/images/hero-mascot.webp" alt="" />
-    </div>
-  </section>
-
-  <app-adventures></app-adventures>
-
-  <section class="difficulty" id="niveles" aria-labelledby="difficulty-title">
-    <div class="section-wrap difficulty-inner">
-      <div class="section-heading">
-        <p class="eyebrow">CADA CAMINO TIENE SU RITMO</p>
-        <h2 id="difficulty-title">¡DESCUBRE QUÉ GARRITA ERES!</h2>
-        <p class="section-intro">
-          Las garritas consideran distancia, desnivel, altitud, terreno, duración y condiciones
-          climáticas para ayudarte a caminar con seguridad y conciencia.
-        </p>
-      </div>
-
-      <div class="difficulty-grid">
-        @for (level of difficultyLevels; track level.number) {
-          <article class="difficulty-card">
-            <img
-              class="paw-rating-image"
-              [src]="level.ratingImage"
-              [alt]="level.ratingLabel"
-            />
-            <img class="difficulty-mascot" [src]="level.mascot" [alt]="level.title" />
-            <div class="difficulty-copy">
-              <p class="level-count">{{ level.number }} {{ level.countLabel }}</p>
-              <h3>{{ level.title }}</h3>
-              <p>{{ level.description }}</p>
-            </div>
-          </article>
-        }
-      </div>
-
-      <p class="difficulty-note">
-        Las garritas son una referencia general. Consulta siempre los requisitos específicos de cada
-        ruta y las recomendaciones del equipo Mixtlis.
-      </p>
-    </div>
-  </section>
-
-  <section class="shop section-wrap" id="tienda" aria-labelledby="shop-title">
-    <div class="section-heading">
-      <p class="eyebrow">EQUÍPATE PARA TU SIGUIENTE AVENTURA</p>
-      <h2 id="shop-title">Garrita, Garrita hasta la cima!! </h2>
-    </div>
-    <div class="shop-empty">
-      <span aria-hidden="true">✳</span>
-      <p>Muy pronto encontrarás aquí tus favoritos del Clan.</p>
-    </div>
-  </section>
-
-  <app-more id="mas"></app-more>
-
-  <section class="newsletter" id="comunidad" aria-labelledby="newsletter-title">
-    <div class="newsletter-inner section-wrap">
-      <div>
-        <p class="eyebrow">CAMINA CON EL CLAN</p>
-        <h2 id="newsletter-title">ÚNETE AL CLAN FELINO DE LAS NUBES</h2>
-        <p>Y nunca te quedes afuera. Entérate de nuestras rutas y aventuras por WhatsApp.</p>
-      </div>
-      <div class="newsletter-signup">
-        <a
-          class="whatsapp-join"
-          href="https://whatsapp.com/channel/0029Va9Mu0yF6sn2kzPNpL3A"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span>UNIRME AL CANAL DE WHATSAPP</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
+<router-outlet></router-outlet>
 
 <footer class="site-footer">
-  <a class="footer-brand" href="#inicio">MIXTLIS <span>EN LA MONTAÑA</span></a>
+  <a class="footer-brand" [routerLink]="['/']" fragment="inicio">
+    MIXTLIS <span>EN LA MONTAÑA</span>
+  </a>
   <p>© 2026 Mixtlis en la Montaña. Todos los derechos reservados.</p>
-  <a href="#inicio" class="back-to-top">VOLVER ARRIBA ↑</a>
+  <a [routerLink]="['/']" fragment="inicio" class="back-to-top">VOLVER ARRIBA ↑</a>
 </footer>

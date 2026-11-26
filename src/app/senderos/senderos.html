@@ -1,0 +1,186 @@
+<section class="mountain-section" aria-labelledby="senderos-title">
+  <div class="mountain-container">
+    <header class="mountain-heading">
+      <p class="mountain-eyebrow">CAMINOS PARA DESCUBRIR</p>
+      <h2 id="senderos-title">Próximos senderos</h2>
+      <p>Explora las rutas del Clan y encuentra una experiencia a tu ritmo.</p>
+    </header>
+
+    <div class="activity-search">
+      <label for="sendero-search-input">Buscar senderos</label>
+      <div class="activity-search-control">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="10.8" cy="10.8" r="6.8"></circle>
+        <path d="m16 16 4.5 4.5"></path>
+      </svg>
+      <input
+        id="sendero-search-input"
+        type="search"
+        placeholder="Busca por nombre, tipo o lugar..."
+        [value]="searchQuery"
+        (input)="updateSearch($event)"
+      />
+      @if (searchQuery) {
+        <button type="button" aria-label="Limpiar búsqueda" (click)="clearSearch()">Limpiar</button>
+      }
+      </div>
+    </div>
+
+    <div class="activity-grid">
+    @for (sendero of filteredSenderos; track sendero.titulo) {
+      <article class="activity-card sendero-card">
+        <img class="activity-image" [src]="sendero.image" [alt]="sendero.titulo" />
+        <div class="activity-card-heading">
+          <span class="activity-type">{{ sendero.tipoActividad }}</span>
+          <h3>{{ sendero.titulo }}</h3>
+          <p>{{ sendero.descripcion }}</p>
+        </div>
+
+        <dl class="activity-overview">
+          <div>
+            <dt>Fecha</dt>
+            <dd>{{ sendero.fecha.textoOriginal }}</dd>
+          </div>
+          @if (sendero.duracion) {
+            <div>
+              <dt>Duración</dt>
+              <dd>{{ sendero.duracion }}</dd>
+            </div>
+          }
+          <div>
+            <dt>Lugares</dt>
+            <dd>{{ sendero.lugares.join(' · ') }}</dd>
+          </div>
+        </dl>
+
+        @if (
+          sendero.datosTecnicos?.nivel ||
+          sendero.datosTecnicos?.distanciaKm !== undefined ||
+          sendero.datosTecnicos?.desnivelMetros !== undefined ||
+          sendero.datosTecnicos?.altitudMaximaMsnm !== undefined ||
+          sendero.datosTecnicos?.condicionFisica
+        ) {
+          <div class="activity-details">
+            <h4>Datos de la ruta</h4>
+            <ul class="detail-chips">
+              @if (sendero.datosTecnicos?.nivel) {
+                <li>{{ sendero.datosTecnicos?.nivel }}</li>
+              }
+              @if (sendero.datosTecnicos?.categoria) {
+                <li>{{ sendero.datosTecnicos?.categoria }}</li>
+              }
+              @if (sendero.datosTecnicos?.distanciaKm !== undefined) {
+                <li>{{ sendero.datosTecnicos?.distanciaKm }} km</li>
+              }
+              @if (sendero.datosTecnicos?.desnivelMetros !== undefined) {
+                <li>{{ sendero.datosTecnicos?.desnivelMetros }} m de desnivel</li>
+              }
+              @if (sendero.datosTecnicos?.altitudMinimaMsnm !== undefined) {
+                <li>Desde {{ sendero.datosTecnicos?.altitudMinimaMsnm }} msnm</li>
+              }
+              @if (sendero.datosTecnicos?.altitudMaximaMsnm !== undefined) {
+                <li>Hasta {{ sendero.datosTecnicos?.altitudMaximaMsnm }} msnm</li>
+              }
+              @if (sendero.datosTecnicos?.condicionFisica) {
+                <li>{{ sendero.datosTecnicos?.condicionFisica }}</li>
+              }
+            </ul>
+          </div>
+        }
+
+        @if (sendero.puntosEncuentro.length > 0) {
+          <details class="activity-disclosure">
+            <summary>Puntos de encuentro</summary>
+            <ul>
+              @for (point of sendero.puntosEncuentro; track point.hora + point.lugar) {
+                <li><strong>{{ point.hora }}</strong> · {{ point.lugar }}</li>
+              }
+            </ul>
+          </details>
+        }
+
+        @if (sendero.regreso?.hora && sendero.regreso?.descripcion) {
+          <p class="return-info">
+            Regreso: {{ sendero.regreso?.hora }} · {{ sendero.regreso?.descripcion }}
+          </p>
+        }
+
+        @if (sendero.costos.precioBase !== undefined || sendero.costos.anticipo !== undefined) {
+          <div class="activity-cost">
+            @if (sendero.costos.precioBase !== undefined) {
+              <div>
+                <span>Desde</span>
+                <strong>{{ sendero.costos.precioBase | currency: 'MXN' : 'symbol' : '1.0-0' }}</strong>
+              </div>
+            }
+            @if (sendero.costos.anticipo !== undefined) {
+              <p>Anticipo: {{ sendero.costos.anticipo | currency: 'MXN' : 'symbol' : '1.0-0' }}</p>
+            }
+          </div>
+        }
+
+        @if (sendero.costos.precioAlternativo?.length) {
+          <ul class="price-list" aria-label="Precios alternativos">
+            @for (option of sendero.costos.precioAlternativo; track option.descripcion) {
+              <li>
+                {{ option.descripcion }}:
+                {{ option.precio | currency: 'MXN' : 'symbol' : '1.0-0' }}
+              </li>
+            }
+          </ul>
+        }
+
+        @if (sendero.costos.costosAdicionales?.length) {
+          <ul class="price-list" aria-label="Costos adicionales">
+            @for (extra of sendero.costos.costosAdicionales; track extra.concepto) {
+              <li>
+                {{ extra.concepto }}:
+                {{ extra.precio | currency: 'MXN' : 'symbol' : '1.0-0' }}
+              </li>
+            }
+          </ul>
+        }
+
+        @if (sendero.incluye.length > 0) {
+          <details class="activity-disclosure">
+            <summary>¿Qué incluye?</summary>
+            <ul>
+              @for (item of sendero.incluye; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </details>
+        }
+
+        @if (sendero.noIncluye?.length) {
+          <details class="activity-disclosure">
+            <summary>No incluye</summary>
+            <ul>
+              @for (item of sendero.noIncluye; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </details>
+        }
+
+        @if (sendero.notas?.length) {
+          <details class="activity-disclosure">
+            <summary>Notas importantes</summary>
+            <ul>
+              @for (note of sendero.notas; track note) {
+                <li>{{ note }}</li>
+              }
+            </ul>
+          </details>
+        }
+      </article>
+    }
+    </div>
+
+    @if (filteredSenderos.length === 0) {
+      <p class="no-activities" role="status">
+        No encontramos senderos que coincidan con “{{ searchQuery }}”.
+      </p>
+    }
+  </div>
+</section>

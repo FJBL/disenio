@@ -7,12 +7,12 @@
   {
     "id": "sendero",
     "label": "Sendero",
-    "href": "#aventuras"
+    "href": "/senderos"
   },
   {
     "id": "montana",
     "label": "Montaña",
-    "href": "#niveles"
+    "href": "/montana"
   },
   {
     "id": "aventura",
@@ -22,7 +22,7 @@
   {
     "id": "familiar",
     "label": "Familiar",
-    "href": "#comunidad"
+    "href": "/familia"
   },
   {
     "id": "mas",

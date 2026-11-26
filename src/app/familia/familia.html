@@ -1,0 +1,193 @@
+<section class="mountain-section" aria-labelledby="familia-title">
+  <div class="mountain-container">
+    <header class="mountain-heading">
+      <p class="mountain-eyebrow">AVENTURAS PARA COMPARTIR</p>
+      <h2 id="familia-title">Experiencias en familia</h2>
+      <p>Descubre salidas para disfrutar la naturaleza y crear recuerdos juntos.</p>
+    </header>
+
+    <div class="activity-search">
+      <label for="familia-search-input">Buscar experiencias</label>
+      <div class="activity-search-control">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.8" cy="10.8" r="6.8"></circle>
+          <path d="m16 16 4.5 4.5"></path>
+        </svg>
+        <input
+          id="familia-search-input"
+          type="search"
+          placeholder="Busca por nombre, tipo o lugar..."
+          [value]="searchQuery"
+          (input)="updateSearch($event)"
+        />
+        @if (searchQuery) {
+          <button type="button" aria-label="Limpiar búsqueda" (click)="clearSearch()">
+            Limpiar
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="activity-grid">
+      @for (activity of filteredActivities; track activity.titulo) {
+        <article class="activity-card">
+          <img class="activity-image" [src]="activity.image" [alt]="activity.titulo" />
+          <div class="activity-card-heading">
+            <span class="activity-type">{{ activity.tipoActividad }}</span>
+            <h3>{{ activity.titulo }}</h3>
+            <p>{{ activity.descripcion }}</p>
+          </div>
+
+          <dl class="activity-overview">
+            <div>
+              <dt>Fecha</dt>
+              <dd>{{ activity.fecha.textoOriginal }}</dd>
+            </div>
+            @if (activity.duracion) {
+              <div>
+                <dt>Duración</dt>
+                <dd>{{ activity.duracion }}</dd>
+              </div>
+            }
+            <div>
+              <dt>Lugares</dt>
+              <dd>{{ activity.lugares.join(' · ') }}</dd>
+            </div>
+          </dl>
+
+          @if (
+            activity.datosTecnicos?.nivel ||
+            activity.datosTecnicos?.distanciaKm !== undefined ||
+            activity.datosTecnicos?.desnivelMetros !== undefined ||
+            activity.datosTecnicos?.altitudMaximaMsnm !== undefined ||
+            activity.datosTecnicos?.condicionFisica
+          ) {
+            <div class="activity-details">
+              <h4>Datos de la ruta</h4>
+              <ul class="detail-chips">
+                @if (activity.datosTecnicos?.nivel) {
+                  <li>{{ activity.datosTecnicos?.nivel }}</li>
+                }
+                @if (activity.datosTecnicos?.categoria) {
+                  <li>{{ activity.datosTecnicos?.categoria }}</li>
+                }
+                @if (activity.datosTecnicos?.distanciaKm !== undefined) {
+                  <li>{{ activity.datosTecnicos?.distanciaKm }} km</li>
+                }
+                @if (activity.datosTecnicos?.desnivelMetros !== undefined) {
+                  <li>{{ activity.datosTecnicos?.desnivelMetros }} m de desnivel</li>
+                }
+                @if (activity.datosTecnicos?.altitudMinimaMsnm !== undefined) {
+                  <li>Desde {{ activity.datosTecnicos?.altitudMinimaMsnm }} msnm</li>
+                }
+                @if (activity.datosTecnicos?.altitudMaximaMsnm !== undefined) {
+                  <li>Hasta {{ activity.datosTecnicos?.altitudMaximaMsnm }} msnm</li>
+                }
+                @if (activity.datosTecnicos?.condicionFisica) {
+                  <li>{{ activity.datosTecnicos?.condicionFisica }}</li>
+                }
+              </ul>
+            </div>
+          }
+
+          @if (activity.puntosEncuentro.length > 0) {
+            <details class="activity-disclosure">
+              <summary>Puntos de encuentro</summary>
+              <ul>
+                @for (point of activity.puntosEncuentro; track point.hora + point.lugar) {
+                  <li><strong>{{ point.hora }}</strong> · {{ point.lugar }}</li>
+                }
+              </ul>
+            </details>
+          }
+
+          @if (activity.regreso?.hora && activity.regreso?.descripcion) {
+            <p class="return-info">
+              Regreso: {{ activity.regreso?.hora }} · {{ activity.regreso?.descripcion }}
+            </p>
+          }
+
+          @if (activity.costos.precioBase !== undefined || activity.costos.anticipo !== undefined) {
+            <div class="activity-cost">
+              @if (activity.costos.precioBase !== undefined) {
+                <div>
+                  <span>Desde</span>
+                  <strong>
+                    {{ activity.costos.precioBase | currency: 'MXN' : 'symbol' : '1.0-0' }}
+                  </strong>
+                </div>
+              }
+              @if (activity.costos.anticipo !== undefined) {
+                <p>
+                  Anticipo:
+                  {{ activity.costos.anticipo | currency: 'MXN' : 'symbol' : '1.0-0' }}
+                </p>
+              }
+            </div>
+          }
+
+          @if (activity.costos.precioAlternativo?.length) {
+            <ul class="price-list" aria-label="Precios alternativos">
+              @for (option of activity.costos.precioAlternativo; track option.descripcion) {
+                <li>
+                  {{ option.descripcion }}:
+                  {{ option.precio | currency: 'MXN' : 'symbol' : '1.0-0' }}
+                </li>
+              }
+            </ul>
+          }
+
+          @if (activity.costos.costosAdicionales?.length) {
+            <ul class="price-list" aria-label="Costos adicionales">
+              @for (extra of activity.costos.costosAdicionales; track extra.concepto) {
+                <li>
+                  {{ extra.concepto }}:
+                  {{ extra.precio | currency: 'MXN' : 'symbol' : '1.0-0' }}
+                </li>
+              }
+            </ul>
+          }
+
+          @if (activity.incluye.length > 0) {
+            <details class="activity-disclosure">
+              <summary>¿Qué incluye?</summary>
+              <ul>
+                @for (item of activity.incluye; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </details>
+          }
+
+          @if (activity.noIncluye?.length) {
+            <details class="activity-disclosure">
+              <summary>No incluye</summary>
+              <ul>
+                @for (item of activity.noIncluye; track item) {
+                  <li>{{ item }}</li>
+                }
+              </ul>
+            </details>
+          }
+
+          @if (activity.notas?.length) {
+            <details class="activity-disclosure">
+              <summary>Notas importantes</summary>
+              <ul>
+                @for (note of activity.notas; track note) {
+                  <li>{{ note }}</li>
+                }
+              </ul>
+            </details>
+          }
+        </article>
+      }
+    </div>
+
+    @if (filteredActivities.length === 0) {
+      <p class="no-activities" role="status">
+        No encontramos experiencias que coincidan con “{{ searchQuery }}”.
+      </p>
+    }
+  </div>
+</section>

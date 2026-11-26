@@ -1,0 +1,104 @@
+[
+  {
+    "image": "assets/images/playa.jpg",
+    "titulo": "4 Playas, 1 Viaje y un Cierre de Año Inolvidable",
+    "descripcion": "Viaje a la costa de Oaxaca con actividades de playa, manglares y camping.",
+    "tipoActividad": "Viaje de playa",
+    "fecha": {
+      "inicio": "26-12",
+      "fin": "30-12",
+      "textoOriginal": "Del 26 al 30 de diciembre"
+    },
+    "duracion": "5 días",
+    "lugares": [
+      "Mazunte",
+      "Zipolite",
+      "Manglares de La Ventanilla",
+      "Punta Cometa",
+      "Puerto Ángel",
+      "Centro histórico"
+    ],
+    "puntosEncuentro": [],
+    "regreso": {},
+    "datosTecnicos": {},
+    "costos": {
+      "precioBase": 2100,
+      "anticipo": 800,
+      "costosAdicionales": [
+        {
+          "concepto": "Camping",
+          "precio": 500
+        }
+      ]
+    },
+    "incluye": [
+      "Transporte redondo desde CDMX",
+      "Seguro de viajero",
+      "Camping con servicios",
+      "Recorrido en lancha por manglares",
+      "Staff de apoyo"
+    ],
+    "noIncluye": [],
+    "notas": []
+  },
+  
+  {
+    "image": "assets/images/demo.jpg",
+    "titulo": "Ermitas en el Desierto de los Leones",
+    "descripcion": "Ruta familiar por las ermitas y monasterio.",
+    "tipoActividad": "Senderismo familiar",
+    "fecha": {
+      "inicio": "22-11",
+      "fin": "22-11",
+      "textoOriginal": "Domingo 22 de noviembre"
+    },
+    "lugares": [
+      "Desierto de los Leones",
+      "La Venta",
+      "7 Ermitas",
+      "Monasterio"
+    ],
+    "puntosEncuentro": [
+      {
+        "hora": "08:00",
+        "lugar": "Metro Tacubaya"
+      },
+      {
+        "hora": "09:30",
+        "lugar": "La Venta"
+      }
+    ],
+    "regreso": {
+      "hora": "16:00",
+      "descripcion": "La Venta"
+    },
+    "datosTecnicos": {
+      "nivel": "Garrita 1",
+      "categoria": "Guardián del Bosque",
+      "distanciaKm": 6,
+      "desnivelMetros": 200,
+      "condicionFisica": "Apto para familias y mascotas"
+    },
+    "costos": {
+      "precioBase": 250,
+      "anticipo": 125
+    },
+    "incluye": [
+      "Recorrido por las 7 Ermitas",
+      "Guías",
+      "Retaguardias",
+      "Botiquín grupal",
+      "Bastones de marcha"
+    ],
+    "noIncluye": [
+      "Comidas",
+      "Transportes",
+      "Entrada al Monasterio"
+    ],
+    "notas": [
+      "Entrada al Monasterio: $25 por persona",
+      "Taxi de regreso al estacionamiento: $50 por persona",
+      "Opción de regresar caminando 3 km adicionales"
+    ]
+  }
+]

@@ -890,7 +890,25 @@ app-root {
   }
 
   .social-rail {
-    display: none;
+    top: auto;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    display: flex;
+    gap: 2px;
+    padding: 5px;
+    border-radius: 999px;
+    box-shadow: 0 3px 14px rgb(0 0 0 / 28%);
+    transform: none;
+  }
+
+  .social-rail a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .social-rail svg {
+    width: 23px;
+    height: 23px;
   }
 
   .hero {

@@ -1,7 +1,7 @@
 [{
-  "nombreCompleto": "María González",
+  "nombreCompleto": "Miry Miztli",
 
-  "whatsapp": "+52 55 1234 5678",
+  "whatsapp": "+52 1 55 4908 1860",
   "horarioAtencion": {
     "dias": ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"],
     "horaInicio": "09:00",
@@ -9,9 +9,9 @@
     "zonaHoraria": "America/Mexico_City"
   }
 },{
-  "nombreCompleto": "Diego González",
+  "nombreCompleto": "Citlali Flores",
 
-  "whatsapp": "+52 55 1234 5678",
+  "whatsapp": "+52 1 55 4265 7154",
   "horarioAtencion": {
     "dias": [ "Martes", "Miércoles", "Jueves", "Viernes"],
     "horaInicio": "09:00",
@@ -19,13 +19,13 @@
     "zonaHoraria": "America/Mexico_City"
   }
 },{
-  "nombreCompleto": "Mirian González",
+  "nombreCompleto": "Diego Ramírez",
  
-  "whatsapp": "+52 55 1234 5678",
+  "whatsapp": "+52 1 55 2883 9900",
   "horarioAtencion": {
-    "dias": [ "Martes", "Miércoles", "Jueves", "Viernes"],
-    "horaInicio": "12:00",
-    "horaFin": "20:00",
+    "dias": [ "Martes", "Miércoles", "Jueves", "Viernes","Sábado","Domingo"],
+    "horaInicio": "09:00",
+    "horaFin": "22:00",
     "zonaHoraria": "America/Mexico_City"
   }
 }
